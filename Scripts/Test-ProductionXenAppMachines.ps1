@@ -1,5 +1,6 @@
 Start-Transcript -Path "$env:Temp\CitrixReport.log"
-Import-Module "$PSScriptPath\USC-Citrix.psm1"
+$ScriptPath = Split-Path -Path $PSCommandPath -Parent
+Import-Module "$ScriptPath\USC-Citrix.psm1"
 $ReportEmail = 'team@if83bu.mailclark.ai'
 #Create a HTML Report
 $HTMLReport = Get-CtxProductionMachines | ForEach-Object { Get-CtxXenAppStatus -ComputerName $_ } | ConvertTo-Html
