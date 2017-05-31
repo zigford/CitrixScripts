@@ -1,4 +1,4 @@
-Import-Module .\USC-Citrix.psm1
+Import-Module "$PSCommandPath\USC-Citrix.psm1"
 $ReportEmail = 'team@if83bu.mailclark.ai'
 #Create a HTML Report
 $HTMLReport = Get-CtxProductionMachines | ForEach-Object { Get-CtxXenAppStatus -ComputerName $_ } | ConvertTo-Html
