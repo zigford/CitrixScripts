@@ -1,5 +1,5 @@
 Import-Module .\USC-Citrix.psm1
-$ReportEmail = 'jpharris@usc.edu.au'
+$ReportEmail = 'team@if83bu.mailclark.ai'
 #Create a HTML Report
 $HTMLReport = Get-CtxProductionMachines | ForEach-Object { Get-CtxXenAppStatus -ComputerName $_ } | ConvertTo-Html
 
