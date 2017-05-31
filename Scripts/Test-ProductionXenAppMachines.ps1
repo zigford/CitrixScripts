@@ -1,9 +1,10 @@
 Start-Transcript -Path "$env:Temp\CitrixReport.log"
 $ScriptPath = Split-Path -Path $PSCommandPath -Parent
 Import-Module "$ScriptPath\USC-Citrix.psm1"
-$ReportEmail = 'team@if83bu.mailclark.ai'
+$ReportEmail = 'jpharris@usc.edu.au'
+#$ReportEmail = 'team@if83bu.mailclark.ai'
 #Create a HTML Report
-$HTMLReport = Get-CtxProductionMachines | ForEach-Object { Get-CtxXenAppStatus -ComputerName $_ } | ConvertTo-Html
+$Report = Get-CtxProductionMachines | ForEach-Object { Get-CtxXenAppStatus -ComputerName $_ } | Out-String
 
-Send-MailMessage -BodyAsHtml -Body ($HTMLReport|Out-String) -From 'wcn-appdev5@usc.internal' -To $ReportEmail -SmtpServer mail.usc.edu.au -Subject 'Citrix Report'
+Send-MailMessage -Body $Report -From 'wcn-appdev5@usc.internal' -To $ReportEmail -SmtpServer mail.usc.edu.au -Subject 'Citrix Report'
 Stop-Transcript
