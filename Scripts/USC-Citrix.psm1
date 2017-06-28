@@ -16,11 +16,11 @@ function Get-CtxProductionMachines {
     )
 
     Write-Verbose "Student Machines"
-    for ($i=3;$i -le 26;$i++) {
+    for ($i=3;$i -le 24;$i++) {
         "vxa-ctxstu$($i.ToString("00"))" 
     }
 
-    for ($i=3;$i -le 4;$i++) {
+    for ($i=1;$i -le 4;$i++) {
         "vxa-ctxstf$($i.ToString("00"))"
     }
 
